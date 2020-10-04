@@ -53,8 +53,17 @@ app.post("/api/notes", function (request, response) {
 })
 
 // //DELETE /api/notes/:id
-// app.delete()
-
+app.delete("/api/notes/:id", function (request, response) {
+    const deleteID = request.params.id
+    fs.readFile(__dirname + "/db/db.json", "UTF8", function (error, data) {
+        if (error) throw error;
+        const deleteNote = JSON.parse(data).filter(entry => { return entry.id != deleteID })
+    fs.writeFile(__dirname + "/db/db.json", JSON.stringify(deleteNote), "UTF8", function (error) {
+        if (error) throw error;
+        response.end();
+    })
+  })
+})
 
 //GET * - Should return the index.html file
 app.get("*", function (request, response) {
