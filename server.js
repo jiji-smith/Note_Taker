@@ -33,9 +33,17 @@ app.get("/api/notes", function (request, response) {
 app.post("/api/notes", function (request, response) {
     const newNote = request.body
     let allNote = []
+    //give them id
+    let id = 0
     fs.readFile(__dirname + "/db/db.json", "UTF8", function (error, data) {
         if (error) throw error;
         allNote = JSON.parse(data)
+        for (let i = 0; i < allNote.length; i++) {
+            if (allNote[i].id > id) {
+                id = allNote[i].id
+            }
+        }
+        newNote.id = parseInt(id) + 1;
         allNote.push(newNote);
         fs.writeFile(__dirname + "/db/db.json", JSON.stringify(allNote), "UTF8", function (error) {
             if (error) throw error;
@@ -44,8 +52,8 @@ app.post("/api/notes", function (request, response) {
     })
 })
 
-//DELETE /api/notes/:id
-
+// //DELETE /api/notes/:id
+// app.delete()
 
 
 //GET * - Should return the index.html file
