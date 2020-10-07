@@ -15,7 +15,7 @@ You can add and delete your reminder/notes
 * [Questions](#questions)
 
 ## Installation
-Please check https://github.com/jiji-smith/Note_Taker
+Please check (https://github.com/jiji-smith/Note_Taker)
 ## Usage
 Check the code, install npm, answer the questions!
 ## License
@@ -23,7 +23,7 @@ MIT License
 ## Contributing
 Jiiiii
 ## Video
-
+<a href="/Note_Taker.mov"></a>
 ## Tests
 
 ## Questions
